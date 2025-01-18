@@ -1,0 +1,1217 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px; 
+  height: 10px; 
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    rgb(119 147 131) 0%,
+    #7a9b4b 50%,
+    rgb(148 177 3) 100%
+  );
+  border-radius: 10px; 
+  border: 2px solid #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a7b35; /* Darker color on hover */
+}
+
+::-webkit-scrollbar-corner {
+  background: #f1f1f1; 
+}
+
+body {
+  font-family: "Poppins", serif;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Main content starts here */
+
+/* hamburger menu  */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+  transition: all ease-in-out 0.3s;
+}
+
+.hamburger.open .line:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+  transition: all ease-in-out 0.3s;
+}
+
+.hamburger.open .line:nth-child(2) {
+  opacity: 0;
+  transition: all ease-in-out 0.3s;
+}
+
+.hamburger.open .line:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+  transition: all ease-in-out 0.3s;
+}
+
+/* Hide the dropdown menu by default */
+
+/* here dropdown menu customize */
+.dropdown-menu {
+  display: block;
+  opacity: 0; 
+  transform: translateY(-20px); 
+  transition: all 0.3s ease; 
+  list-style-type: none;
+  padding: 10px; 
+  margin: 0;
+  position: absolute;
+  z-index: 9999;
+  overflow: hidden;
+  /* background: rgba(255, 255, 255, 0.548);  */
+  background: linear-gradient(
+    90deg,
+    rgba(119, 147, 131, 0.692) 0%,
+    #7a9b4b9d 50%,
+    rgba(148, 177, 3, 0.692) 100%
+  );
+  --backdrop-filter: blur(20px) saturate(150%); 
+  border-radius: 10px; 
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  visibility: hidden;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1; 
+  transform: translateY(0); 
+  visibility: visible; 
+}
+
+/* Add some spacing and styles to menu items */
+.dropdown-menu li {
+  margin: 5px 0;
+}
+.dropdown-menu li a:hover {
+  border-radius: 10px;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+}
+
+.dropdown-menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Slight highlight on hover */
+}
+
+/* Style for the dropdown trigger */
+.dropdown .drop-arrow-ctrl {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* here dropdown menu customize */
+
+/* Navbar Styles */
+.navbar {
+  background: linear-gradient(
+    90deg,
+    rgb(119 147 131) 0%,
+    #7a9b4b 50%,
+    rgb(148 177 3) 100%
+  );
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.containerr {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.navbar-logo {
+  max-height: 70px;
+  display: flex;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 12rem;
+  padding: 0.4rem 0;
+}
+
+.navbar-items {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.navbar-items li a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.navbar-items li a:hover {
+  color: #ffffff;
+}
+
+.contact {
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all ease-in-out 0.3s;
+}
+.contact:hover {
+  border: 1px solid #000000;
+  cursor: pointer;
+  background-color: #333;
+  color: white;
+}
+
+/* Modal Popup */
+
+/* Modal Background */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  z-index: 999;
+}
+
+/* Modal Content */
+.modal {
+  background: white;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 10px;
+  display: flex;
+  overflow: hidden;
+  transform: scale(0.9);
+  transition: transform 0.5s ease;
+  padding: 1rem;
+}
+
+.modal.active {
+  transform: scale(1);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal .pop-img img {
+  flex: 1;
+  height: 450px;
+}
+
+.modal .right-box {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.modal .right-box p span {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+}
+.modal .right-box p {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+}
+
+.modal .right-box a {
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid #333;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0 auto;
+  width: 50%;
+  transition: background 0.3s ease;
+}
+
+.modal .right-box a:hover {
+  background: #333;
+  border: 1px solid #333;
+  color: #ffffff;
+}
+
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  color: #333;
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 45px;
+}
+
+@media (max-width: 767px) {
+  .modal-overlay {
+    top: 20;
+  }
+  .modal {
+    background: white;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.5s ease;
+    padding: 2rem 0.5rem;
+    flex-direction: column;
+  }
+  .modal .pop-img img {
+    flex: 1;
+    height: 300px;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 802px) and (min-width: 768px) {
+  .modal {
+    width: 100%;
+  }
+  .modal .right-box a {
+    padding: 10px;
+  }
+}
+
+/* Modal Popup */
+
+#image-ctrl {
+  height: calc(100vh - 83px);
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff91 !important;
+}
+
+/* Welcome messgage  */
+
+.bg-img {
+  width: 100%;
+}
+
+.welcome-heading {
+  font-family: "Jaini", serif;
+  text-align: center;
+  font-size: 65px;
+  font-weight: 400;
+  color: #fff;
+}
+
+/* Container and Well-wishers Section Styling */
+.head-para h2{
+  margin-bottom: 1rem;
+}
+.well-wisher-parent-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+#well-wisher-sub-conatiner {
+  padding: 3rem 0;
+}
+.well-wishers-section {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4rem !important;
+  margin-bottom: 4rem !important;
+  border-radius: 10px;
+  padding: 2.4rem 1.4rem;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+
+/* Section 1 (Button Section) Styling */
+.section-1 {
+  max-width: 40%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 3rem 1rem;
+}
+
+/* Section 2 and Section 3 Styling */
+.section-2,
+.section-3 {
+  max-width: 60%;
+  display: flex;
+  padding: 3rem;
+  gap: 2.65rem;
+}
+
+/* Section Inside Content Styling */
+.section-3-inside-sec-1-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Button Styling */
+.well-wisher-btn svg {
+  width: 30px;
+}
+.well-wisher-btn svg:active {
+  width: 30px;
+  font-size: 35px;
+  color: rgb(0, 0, 0) !important;
+  transition: all ease-in-out 0.3s;
+}
+/* Heading Styling */
+.well-wisher-heading {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 34px;
+  color: #d54056;
+}
+
+/* Button Container and Buttons Styling */
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  font-weight: normal;
+  margin: 0.4rem 0;
+}
+
+.btn-container a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: all ease-in-out 0.4s;
+  font-weight: 400;
+}
+
+
+.well-wisher-btn {
+  border: 1px solid #000103;
+  border-radius: 5px;
+  padding: 10px 10px;
+  font-weight: normal;
+  margin: 0.4rem 0;
+  background: transparent;
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex; 
+  align-items: center; 
+}
+
+.well-wisher-btn.active {
+  background-color: #333;
+  color: white;
+}
+
+/* Section Headings Styling */
+.second-section-heading-1 {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.second-section-heading-2 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #000000a6;
+}
+
+/* Image Styling */
+.second-section-image img {
+  width: 196px;
+  height: 286px;
+  border-radius: 20px;
+  opacity: 0.8; 
+  object-fit: cover;
+}
+
+/* Paragraph Styling */
+.second-section-para {
+  text-align: justify;
+  padding-top: 20px;
+}
+
+/* Visibility Toggle Styling */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  background-color: #fff4f4a8;
+  border-radius: 20px;
+  transition: all ease-in-out 0.3s;
+}
+
+/* Latest News - Swiper JS  */
+.latest-news-heading .kite img {
+  display: block;
+  height: 70px;
+  margin: 0 auto;
+}
+
+.parent-latest-news-container {
+  background-color: #fff4f4a8;
+}
+
+.latest-news-container {
+  padding: 2rem 0;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.latest-news-heading {
+  text-align: center;
+  color: #221f1ffa;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+#sub-container {
+  padding: 3rem 0;
+  font-weight: 700;
+}
+
+/* official */
+.parent-official-container {
+  background: rgb(240 249 255 / 59%);
+  padding: 2rem 0;
+}
+.sub-official-container {
+  max-width: 1300px;
+  margin: 2rem auto;
+}
+
+.official-heading {
+  text-align: center;
+  text-align: center;
+  color: #221f1ffa;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.official-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding: 3rem 3rem;
+}
+
+.official-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  max-width: 250px;
+}
+
+.official-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.official-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 500px) {
+  .parent-official-container {
+    padding: 1rem 0 0px 0;
+  }
+  .official-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 2rem 1rem;
+  }
+  .official-card img {
+    width: 100%;
+    height: auto;
+  }
+  .official-heading {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .btn-container a {
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 501px) {
+  .official-grid-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 1.5rem 1rem;
+  }
+  .official-card img {
+    width: 100%;
+    height: auto;
+  }
+  .official-heading {
+    font-size: 32px;
+    font-weight: 500;
+  }
+}
+
+/* official */
+
+/* Karmadakshya Starts Here */
+
+.karma-parent-container {
+  background-color: #fff;
+  padding: 2rem 0;
+}
+
+.karma-subparent-conatiner {
+  background: none !important;
+  max-width: 1300px !important;
+  margin: 0 auto;
+}
+
+.krma-card-image-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.krma-card-image {
+  padding: 1rem;
+}
+
+.krma-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  transition: all ease-in-out 0.3s;
+}
+
+.krma-card-image img:hover {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  /* Mobile */
+  .krma-card-image-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .desktop-version {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Tablets */
+  .krma-card-image-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .desktop-version {
+    display: none;
+  }
+}
+
+@media (min-width: 1000px) {
+  /* Laptops and larger screens */
+  .krma-card-image-container {
+    display: none;
+  }
+}
+
+@media (min-width: 1000px) {
+  /* Laptops and larger screens */
+  .desktop-version {
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .card-1 {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-2 {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Karmadakshya Ends  Here */
+
+/* Panchayat Samiti Starts Here  */
+
+.panchayat-swiperr-parent-conatainer {
+  max-width: 1700px;
+  margin: 0 auto;
+  background: #fff8f8;
+  border-radius: 20px;
+  padding: 0 1rem;
+}
+.panchayat-swiperr-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem 0;
+}
+
+.panchayat-swiper-heading {
+  font-size: 40px;
+}
+
+.panchayat-original-swiper-card swiper-container {
+  width: 220px;
+  height: 300px;
+}
+
+.panchayat-original-swiper-card swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  color: #fff;
+}
+
+.panchayat-original-swiper-card swiper-slide img {
+  object-fit: contain;
+  max-width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.panchayat-btn {
+  display: inline-flex;
+  gap: 2rem;
+  border: 1px solid #000000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all ease-in-out 0.3s;
+  position: relative;
+  top: 80px;
+  font-weight: 500;
+}
+
+.button-ctrl-swiper {
+  color: black;
+}
+
+.panchayat-btn a:hover {
+  color: white;
+}
+
+.panchayat-btn:hover {
+  cursor: pointer;
+  background-color: rgb(26, 18, 18);
+  color: white;
+}
+
+.panchayat-svg {
+  fill: #000;
+  transition: fill 0.3s ease;
+}
+
+.panchayat-btn:hover .panchayat-svg {
+  fill: #fff;
+}
+
+/* Media Queries   */
+/* Media Queries   */
+
+@media (max-width: 982px) and (min-width: 769px) {
+  .navbar-menu {
+    gap: 3.4rem !important;
+  }
+  .navbar-items {
+    gap: 1rem;
+  }
+}
+@media (max-width: 375px) {
+  .navbar-menu {
+    gap: 15rem !important;
+  }
+}
+
+@media (max-width: 500px) and (min-width: 376px) {
+  .navbar-menu {
+    gap: 17rem !important;
+  }
+}
+
+/* Mobile size  */
+@media (max-width: 500px) {
+  .navbar-items {
+    padding: 1.33rem !important;
+  }
+
+  /* for image crasoul */
+  #image-ctrl {
+    height: 30vh !important;
+  }
+  .latest-news-heading {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  #sub-container {
+    padding: 2rem 0;
+  }
+  .latest-news-container {
+    margin: 1rem auto;
+  }
+  .latest-news-heading .kite img {
+    height: 30px !important;
+  }
+  .contact {
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  .karma-parent-container {
+    background-color: #fff;
+    padding: 0;
+  }
+  .krma-card-image-container {
+    padding: 1rem 0;
+  }
+
+  /* Panchayat Swiper Effect Card  */
+  .panchayat-swiperr-container {
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .panchayat-swiper-heading {
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .panchayat-btn {
+    display: inline-flex;
+    gap: 2rem;
+    border: 1px solid #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all ease-in-out 0.3s;
+    position: relative;
+    top: 0;
+
+    font-weight: 500;
+  }
+  .panchayat-swiperr-parent-conatainer {
+    background: #f6f4ff;
+    border-radius: 0px;
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dropdown:hover .dropdown-menu {
+    display: inline-block;
+    background: #0000006b;
+    border-radius: 5px;
+  }
+
+  .dropdown-menu {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    background: transparent;
+  }
+
+  .navbar-menu {
+    gap: 40rem;
+  }
+  .navbar-items {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #000000b5;
+    padding: 2rem 1rem;
+    z-index: 999;
+    transition: all ease-in-out;
+  }
+
+  .navbar-items.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+  #image-ctrl {
+    height: 50vh;
+  }
+
+  #well-wisher-sub-conatiner {
+    padding: 0 0.5rem;
+  }
+  .well-wishers-section {
+    flex-direction: column;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    border-radius: 10px;
+    box-shadow: none;
+    padding: 2.4rem 0.4rem;
+  }
+  .well-wishers-section .well-wisher-heading {
+    font-size: 30px;
+  }
+
+  .well-wisher-btn {
+    border: 1px solid #000103;
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-weight: normal;
+    margin: 0.4rem 0;
+    background: transparent;
+    text-align: left;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .section-1 {
+    max-width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .section-3 {
+    max-width: 100%;
+    display: flex;
+    padding: 0;
+    gap: 0.65rem;
+  }
+
+  .section-2,
+  .section-3 {
+    max-width: 100%;
+    flex-direction: column-reverse;
+    padding: 0;
+    gap: 0.65rem;
+    align-items: center;
+  }
+
+  .second-section-para {
+    padding-top: 10px;
+  }
+  .second-section-heading-1 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .second-section-heading-2 {
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .visible {
+    background-color: #f5eded;
+    border-radius: 5px;
+    padding: 1rem;
+  }
+
+  .second-section-image img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  .section-3-inside-sec-1-2 {
+    align-items: center;
+  }
+
+  /* Swiper Js  */
+  .swiper-slide .card {
+    height: 500px;
+    border-radius: 5px;
+    padding: 0 1rem;
+  }
+  .card img {
+    border-radius: 5px;
+  }
+  .latest-news-container {
+    padding: 2rem 0;
+    margin: 2rem auto 0rem auto;
+  }
+  .latest-news-heading {
+    font-weight: 500;
+  }
+  .latest-news-heading .kite img {
+    height: 35px;
+  }
+
+  /* panchayat samiti */
+  .panchayat-swiper-heading {
+    font-size: 30px;
+  }
+  .panchayat-original-swiper-card swiper-container {
+    width: 200px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 769px) {
+  .section-2,
+  .section-3 {
+    padding: 1.5rem;
+    align-items: center;
+  }
+  .second-section-heading-1 {
+    font-size: 20px;
+  }
+  .second-section-heading-2 {
+    font-size: 18px;
+  }
+  .section-1 {
+    padding: 1rem;
+  }
+
+  .well-wisher-heading {
+    font-size: 28px;
+  }
+
+  .well-wisher-btn {
+    padding: 10px 10px;
+    margin: 0.4rem 0;
+  }
+}
+
+/*  swiperr-events in html line number (238) */
+.swiperr-events {
+  margin: 0 auto;
+  display: block;
+  padding: 15px 25px;
+  border: 1px solid #333;
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 5px;
+  transition: all ease-in-out 0.3s;
+  color: black;
+}
+.swiperr-events a {
+  color: inherit;
+}
+
+.swiperr-events:hover {
+  color: #fff;
+  background: #333;
+  cursor: pointer;
+}
+
+/* Footer  */
+/* Footer  */
+
+.footer-parent-container {
+  background: #000000;
+  color: white;
+  padding: 3rem 1rem;
+  margin: 3rem 0 0 0;
+}
+.sub-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  max-width: 1300px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.item-container img {
+  height: 120px;
+}
+.item-container li {
+  list-style: none;
+}
+
+.social-icons img {
+  height: 30px;
+}
+
+.item-container-2 .arrow-edit {
+  color: #ff0000;
+  padding: 0 3px;
+}
+.item-container-1,
+.item-container-2,
+.item-container-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.33rem;
+}
+
+.item-container a {
+  color: white;
+  transition: all ease-in-out 0.3s;
+}
+.item-container a:hover {
+  color: rgba(161, 154, 154, 0.836);
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .sub-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .signature-container {
+    font-size: 13px;
+    padding: 1rem 0;
+  }
+}
+
+/* Signature | Copyright */
+.signature-container {
+  background: #d53f56;
+  color: white;
+  text-align: center;
+  font-weight: normal;
+  padding: 0.4rem 0;
+}
+
+#signature-2 {
+  font-size: 12px;
+}
+#signature-2 a {
+  color: white;
+}
+
+.social-icons img:hover {
+  cursor: pointer;
+}
+
+/* marker  */
+.marker img {
+  height: 25px;
+}
+.marker {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (max-width: 500px) {
+  .marker img {
+    height: 20px;
+  }
+  
+}
