@@ -13,52 +13,55 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("modal");
   const closeModal = document.getElementById("closeModal");
 
-  // Check if modal has already been shown
-  if (!localStorage.getItem("modalShown")) {
-    // Show modal after 3 seconds
-    setTimeout(() => {
-      modal.classList.add("active");
+  // Ensure modal elements exist before proceeding
+  if (modal && closeModal) {
+    // Check if modal has already been shown in the current session
+    if (!sessionStorage.getItem("modalShown")) {
+      // Show modal after 3 seconds
+      setTimeout(() => {
+        modal.classList.add("active");
 
-      // Set a flag in localStorage that the modal has been shown
-      localStorage.setItem("modalShown", "true");
-    }, 3000);
-  }
-
-  // Close modal on button click
-  closeModal.addEventListener("click", () => {
-    modal.classList.remove("active");
-  });
-
-  // Close modal on clicking outside the content
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.classList.remove("active");
+        // Set a flag in sessionStorage that the modal has been shown
+        sessionStorage.setItem("modalShown", "true");
+      }, 3000);
     }
-  });
+
+    // Close modal on button click
+    closeModal.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    // Close modal on clicking outside the content
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+  }
 });
 
 // Modal Popup Js
 
 // Swiper Slider
 var swiper1 = new Swiper(".mySwiper", {
-  loop: true, 
-  slidesPerView: 1, 
-  spaceBetween: 30, 
+  loop: true,
+  slidesPerView: 1,
+  spaceBetween: 30,
   autoplay: {
-    delay: 3000, 
-    disableOnInteraction: false, 
+    delay: 3000,
+    disableOnInteraction: false,
   },
   navigation: {
-    nextEl: ".swiper-button-next", 
+    nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
   pagination: {
-    el: ".swiper-pagination", 
+    el: ".swiper-pagination",
     clickable: true,
   },
   breakpoints: {
     768: {
-      slidesPerView: 1, 
+      slidesPerView: 1,
       spaceBetween: 0,
     },
     500: {
@@ -66,39 +69,39 @@ var swiper1 = new Swiper(".mySwiper", {
       spaceBetween: 0,
     },
     0: {
-      slidesPerView: 1, 
+      slidesPerView: 1,
       spaceBetween: 0,
     },
   },
 });
 
 var swiper2 = new Swiper(".mySwiper2", {
-  loop: true, 
-  slidesPerView: 3, 
-  spaceBetween: 30, 
+  loop: true,
+  slidesPerView: 3,
+  spaceBetween: 30,
   autoplay: {
-    delay: 9000, 
-    disableOnInteraction: false, 
+    delay: 9000,
+    disableOnInteraction: false,
   },
   navigation: {
-    nextEl: ".swiper-button-next", 
+    nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
   pagination: {
-    el: ".swiper-pagination", 
+    el: ".swiper-pagination",
     clickable: true,
   },
   breakpoints: {
     768: {
-      slidesPerView: 3, 
+      slidesPerView: 3,
       spaceBetween: 30,
     },
     500: {
-      slidesPerView: 1, 
+      slidesPerView: 1,
       spaceBetween: 0,
     },
     0: {
-      slidesPerView: 1, 
+      slidesPerView: 1,
       spaceBetween: 0,
     },
   },
